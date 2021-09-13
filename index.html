@@ -7,27 +7,19 @@
   <title>Document</title>
   <style>
     body{
-      background-color: #fad0d0;
-      transition: 0.5s;
+      background-color: rgb(97, 152, 170);
+      transition: all 0.9s;
     }
     .bgcolor--blue{
-      background-color: #93b5c6;
+      background-color: #c798b7;
     }
-    .bgcolor--gray{
-      background-color: #c9ccd5;
+    .bgcolor--gray {
+      background-color: lightgray;
     }
-
-    button{
-      width: 180px;
-      height: 90px;
-      border: none;
-      border-radius: 10px;
-      font-family: '나눔스퀘어', '나눔고딕';
-      color: white;
-      font-size: 16px;
-      background-color: rgb(102, 89, 99);
+    .bg--img {
+      background: url('bg.jpg');
+      background-size: 100%;
     }
-
     .btns {
       position: relative;
       top: 60px;
@@ -35,34 +27,50 @@
       margin: auto;
       text-align: center;
     }
+    button{
+      width: 140px;
+      height: 80px;
+      background-color: rgb(25, 41, 46);
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 14px;
+      font-family: '나눔고딕';
+      line-height: 20px;
 
+    }
   </style>
 </head>
-
 <body>
-    <div class="btns">
-  <button class="btn_toggle">배경색상변경 토글</button>
-  <button class="btn--reset">배경색상변경 리셋</button>
-  <button class="btn--bggray">배경색상변경 그레이</button>
-</div>
-
+  <div class="btns">
+    <button class="btn_toggle">배경색상변경 <br>toggle</button>
+    <button class="btn--reset">배경색상 <br>reset</button>
+    <button class="btn--bggray">배경색상변경 <br>Gray</button>
+    <button class="btn--bgimg">배경이미지 <br>background</button>
+    
+  </div>
   <script>
     const btnToggle = document.querySelector('.btn_toggle');
     // addEventListener('이벤트', 실행함수);
     btnToggle.addEventListener('click', function () {
       document.body.classList.toggle('bgcolor--blue');
+      document.body.classList.remove('bg--img');
       // console.log('버튼클릭');
-
     });
-const btnReset = document.querySelector('.btn--reset');
-btnReset.addEventListener('click', function () {
-  document.body.classList.remove('bgcolor--blue', 'bgcolor--gray');
-});
+    const btnReset = document.querySelector('.btn--reset');
+    btnReset.addEventListener('click', function () {
+      document.body.classList.remove('bgcolor--blue', 'bgcolor--gray','bg--img');
+    });
 
-const btnBgGray = document.querySelector('.btn--bggray');
-btnBgGray.addEventListener('click', function () {
-  document.body.classList.add('bgcolor--gray');
-});
+    const btnBgGray = document.querySelector('.btn--bggray');
+    btnBgGray.addEventListener('click', function () {
+      document.body.classList.remove('bg--img');
+      document.body.classList.add('bgcolor--gray');
+    });
+    const btnBgImg = document.querySelector('.btn--bgimg');
+    btnBgImg.addEventListener('click', function () {
+      document.body.classList.add('bg--img');
+    });
 
 
 
