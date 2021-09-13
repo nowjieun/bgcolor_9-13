@@ -35,7 +35,12 @@
     });
 const btnReset = document.querySelector('.btn--reset');
 btnReset.addEventListener('click', function () {
-  document.body.classList.remove('bgcolor--blue')
+  document.body.classList.remove('bgcolor--blue', 'bgcolor--gray');
+});
+
+const btnBgGray = document.querySelector('.btn--bggray');
+btnBgGray.addEventListener('click', function () {
+  document.body.classList.add('bgcolor--gray');
 });
 
 
