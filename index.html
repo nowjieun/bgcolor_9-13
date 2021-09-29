@@ -9,6 +9,7 @@
     body{
       background-color: rgb(97, 152, 170);
       transition: all 0.9s;
+      margin: 0;
     }
     .bgcolor--blue{
       background-color: #c798b7;
@@ -16,10 +17,7 @@
     .bgcolor--gray {
       background-color: lightgray;
     }
-    .bg--img {
-      background: url('bg.jpg');
-      background-size: 100%;
-    }
+
     .btns {
       position: relative;
       top: 60px;
@@ -37,18 +35,32 @@
       font-size: 14px;
       font-family: '나눔고딕';
       line-height: 20px;
+    }
 
+    .bg__img{
+      margin: 0;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background: url('bg.jpg');
+      transition: 1s;
+      opacity: 0;
+    }
+
+    .bg__img--show{
+      opacity: 1;
     }
   </style>
 </head>
 <body>
+  <div class="bg__img"></div>
   <div class="btns">
     <button class="btn_toggle">배경색상변경 <br>toggle</button>
     <button class="btn--reset">배경색상 <br>reset</button>
     <button class="btn--bggray">배경색상변경 <br>Gray</button>
     <button class="btn--bgimg">배경이미지 <br>background</button>
-    
   </div>
+  
   <script>
     const btnToggle = document.querySelector('.btn_toggle');
     // addEventListener('이벤트', 실행함수);
@@ -59,17 +71,21 @@
     });
     const btnReset = document.querySelector('.btn--reset');
     btnReset.addEventListener('click', function () {
+      bgContainer.classList.remove('bg__img--show');
       document.body.classList.remove('bgcolor--blue', 'bgcolor--gray','bg--img');
     });
 
     const btnBgGray = document.querySelector('.btn--bggray');
     btnBgGray.addEventListener('click', function () {
-      document.body.classList.remove('bg--img');
+      // document.body.classList.remove('bg--img');
+      bgContainer.classList.remove('bg__img--show');
       document.body.classList.add('bgcolor--gray');
     });
+    const bgContainer = document.querySelector('.bg__img');
     const btnBgImg = document.querySelector('.btn--bgimg');
     btnBgImg.addEventListener('click', function () {
-      document.body.classList.add('bg--img');
+      //document.body.classList.add('bg--img');
+      bgContainer.classList.add('bg__img--show');
     });
 
 
