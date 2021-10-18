@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
     body{
       background-color: rgb(97, 152, 170);
@@ -57,6 +58,8 @@
     }
 
     .btns.bgshow{ background-color: rgb(2, 4, 5); }
+
+    #topButton{position: absolute; z-index: 999px; top: 85%; left: 92%; position: fixed;}
   </style>
 </head>
 <body>
@@ -67,6 +70,8 @@
     <button class="btn--bggray">배경색상변경 <br>Gray</button>
     <button class="btn--bgimg">배경이미지 <br>background</button>
   </div>
+
+  <div id="topButton" style="cursor: pointer"><img src="button.png" id="topButtonImg" width="90"></div>
   
   <script>
     const btnToggle = document.querySelector('.btn_toggle');
@@ -98,14 +103,36 @@
 
 
 
-    const navcontainer = document.querySelector('.btns')
+  const navcontainer = document.querySelector('.btns')
 document.addEventListener('scroll', function () {
-  // console.log(window.scrollY);
-  if(window.scrollY > 100) {
+  console.log(window.scrollY);
+  if(window.scrollY > 60) {
     navcontainer.classList.add('bgshow');
+    navToggle.classList.add('bgshow');
+    console.log('add');
   }else{
   navcontainer.classList.remove('bgshow');
+  navToggle.classList.remove('bgshow');
 }
+});
+
+
+
+$(document).ready(function() {
+
+$(window).scroll(function() {
+    // top button controll
+    if ($(this).scrollTop() > 500) {
+        $('#topButton').fadeIn();
+    } else {
+        $('#topButton').fadeOut();
+    }
+});
+
+$("#topButtonImg").click(function() {
+  $('html, body').animate({scrollTop:0}, '300');
+});
+
 });
 
 
